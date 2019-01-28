@@ -34,8 +34,8 @@ export default {
             this.$http.get('https://www.apiopen.top/journalismApi').then(result => {
                 if(result.body.code === 200){
                     this.newslist = result.body.data.dy
-                    console.log(this.newslist)
-                    console.log(result.body.data.dy[0].picInfo[0].url)
+                    // console.log(this.newslist)
+                    // console.log(result.body.data.dy[0].picInfo[0].url)
                     // Toast("OK！")
                 }else{
                     Toast("获取新闻列表失败！")

@@ -1,89 +1,105 @@
 <template>
   <div class="app-container">
     <!-- 顶部 Header 区域 -->
-    <mt-header fixed title="2019Vue项目"></mt-header>
+    <mt-header fixed title="2019Vue项目">
+        <mt-button @click="fanhui" slot="left" icon="back">返回</mt-button>
+    </mt-header>
 
     <!-- 中间的 路由 router-view 区域 -->
-		<transition>
-			<router-view></router-view>
-		</transition>
+    <transition>
+      <router-view></router-view>
+    </transition>
 
     <!-- 底部 Tabbar 区域 -->
     <nav class="mui-bar mui-bar-tab">
-			<router-link class="mui-tab-item-zw" to="/home">
-				<span class="mui-icon mui-icon-home"></span>
-				<span class="mui-tab-label">首页</span>
-			</router-link>
-			<router-link class="mui-tab-item-zw" to="/member">
-				<span class="mui-icon mui-icon-contact"></span>
-				<span class="mui-tab-label">会员</span>
-			</router-link>
-			<router-link class="mui-tab-item-zw" to="/shopcar">
-				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">0</span></span>
-				<span class="mui-tab-label">购物车</span>
-			</router-link>
-			<router-link class="mui-tab-item-zw" to="/search">
-				<span class="mui-icon mui-icon-search"></span>
-				<span class="mui-tab-label">搜索</span>
-			</router-link>
-		</nav>
+      <router-link class="mui-tab-item-zw" to="/home">
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+      </router-link>
+      <router-link class="mui-tab-item-zw" to="/member">
+        <span class="mui-icon mui-icon-contact"></span>
+        <span class="mui-tab-label">会员</span>
+      </router-link>
+      <router-link class="mui-tab-item-zw" to="/shopcar">
+        <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+          <span class="mui-badge" id="badge">0</span>
+        </span>
+        <span class="mui-tab-label">购物车</span>
+      </router-link>
+      <router-link class="mui-tab-item-zw" to="/search">
+        <span class="mui-icon mui-icon-search"></span>
+        <span class="mui-tab-label">搜索</span>
+      </router-link>
+    </nav>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+	data(){
+		return{}
+	},
+	methods:{
+		fanhui(){
+			this.$router.go(-1)
+		}
+	}
+};
 </script>
 
 
 <style lang="scss" scoped>
-.app-container{
-  padding-top: 40px;
-	padding-bottom: 50px;
-	overflow-x: hidden;
-	z-index: 1000;
+.mint-header {
+  z-index: 99;
 }
-.v-enter{
-	opacity: 0;
-	transform: translateX(100%);
+.app-container {
+  padding-top: 40px;
+  padding-bottom: 50px;
+  overflow-x: hidden;
+  
+}
+.v-enter {
+  opacity: 0;
+  transform: translateX(100%);
 }
 
-.v-leave-to{
-	opacity: 0;
-	transform: translateX(-100%);
-	position: absolute;
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(-100%);
+  position: absolute;
 }
 
 .v-enter-active,
-.v-leave-active{
-	transition: all 0.5s ease;
+.v-leave-active {
+  transition: all 0.5s ease;
 }
 
-// 处理tab-item滑动不能切换页面的问题
+// 处理tab-item点击不能切换页面的问题
 .mui-bar-tab .mui-tab-item-zw.mui-active {
-    color: #007aff;
+  color: #007aff;
 }
 .mui-bar-tab .mui-tab-item-zw {
-    display: table-cell;
-    overflow: hidden;
-    width: 1%;
-    height: 50px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: #929292;
+  display: table-cell;
+  overflow: hidden;
+  width: 1%;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #929292;
 }
 .mui-bar-tab .mui-tab-item-zw .mui-icon {
-    top: 3px;
-    width: 24px;
-    height: 24px;
-    padding-top: 0;
-    padding-bottom: 0;
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .mui-bar-tab .mui-tab-item-zw .mui-icon ~ .mui-tab-label {
-    font-size: 11px;
-    display: block;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 11px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

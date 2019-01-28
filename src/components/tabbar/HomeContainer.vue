@@ -1,10 +1,7 @@
 <template>
   <div>
-    <mt-swipe :auto="3000">
-      <mt-swipe-item v-for="item in lunbotuList" :key="item.url">
-        <img :src="item.url" alt>
-      </mt-swipe-item>
-    </mt-swipe>
+    <!-- 轮播图区域 -->
+    <swiper :isfull="isfull" :lunbotuList="lunbotuList"></swiper>
 
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -20,10 +17,10 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/goodslist">
           <img src="../../images/menu3.png" alt="">
           <div class="mui-media-body">商品购买</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -48,10 +45,12 @@
 </template>
 
 <script>
+import swiper from '../subcomponents/swiper.vue'
 export default {
   data() {
     return {
-      lunbotuList: [] //保存轮播图的数组
+      lunbotuList: [], //保存轮播图的数组
+      isfull:true
     };
   },
   created() {
@@ -87,29 +86,15 @@ export default {
           }
         });
     }
+  },
+  components:{
+    swiper
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe {
-  height: 200px;
-  .mint-swipe-item {
-    &:nth-child(1) {
-      background-color: rgb(71, 33, 158);
-    }
-    &:nth-child(2) {
-      background-color: rgb(5, 172, 144);
-    }
-    &:nth-child(3) {
-      background-color: rgb(9, 66, 47);
-    }
-  }
-  img {
-    width: 375px;
-    height: 200px;
-  }
-}
+
 .mui-grid-view.mui-grid-9{
   background-color: rgb(255, 255, 255);
   border: none;

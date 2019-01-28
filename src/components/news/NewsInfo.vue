@@ -77,8 +77,6 @@ export default {
     display: flex;
     justify-content: space-between;
   }
-  .content {
-  }
   .vid-wrap{
     width:100%;background: #000;
     position:relative;
