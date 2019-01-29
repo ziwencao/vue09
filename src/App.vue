@@ -2,7 +2,9 @@
   <div class="app-container">
     <!-- 顶部 Header 区域 -->
     <mt-header fixed title="2019Vue项目">
-        <mt-button @click="fanhui" slot="left" icon="back">返回</mt-button>
+      <span slot="left" @click="fanhui" v-show="flag">
+        <mt-button slot="left" icon="back">返回</mt-button>
+        </span>
     </mt-header>
 
     <!-- 中间的 路由 router-view 区域 -->
@@ -22,7 +24,7 @@
       </router-link>
       <router-link class="mui-tab-item-zw" to="/shopcar">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge" id="badge">0</span>
+          <span class="mui-badge" id="badge">{{this.$store.getters.getAllCount}}</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -37,13 +39,27 @@
 <script>
 export default {
 	data(){
-		return{}
-	},
+		return{
+      flag:false
+    }
+  },
+  created(){
+    this.flag = this.$route.path === "/home"?false:true
+  },
 	methods:{
 		fanhui(){
 			this.$router.go(-1)
 		}
-	}
+  },
+  watch:{
+    "$route.path": function(newVal){
+      if(newVal === "/home"){
+        this.flag = false
+      }else{
+        this.flag = true
+      }
+    }
+  }
 };
 </script>
 
